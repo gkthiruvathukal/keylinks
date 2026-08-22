@@ -69,17 +69,20 @@ links:
   isn't showing what you expect. To add a new icon, add an inline SVG
   `<path>` entry to `ICONS` (24x24 viewBox, `stroke="currentColor"
   stroke-width="2"` for line icons, `fill="currentColor"` for brand marks).
-- **Layout**: `site.layout: tiled` gives a responsive card grid (2 columns
-  at ≤600px, 1 column at ≤480px for phones); `list` gives a single-column
-  list of rows. Toggle it in `links.yaml` — no code changes needed.
+- **Layout**: `site.layout: tiled` gives a responsive card grid (capped at 2
+  columns at ≤860px, 1 column at ≤600px for phones/small tablets); `list`
+  gives a single-column list of rows. Toggle it in `links.yaml` — no code
+  changes needed.
 
 ## Project structure
 
 ```
-links.yaml          content: site config, categories, links
-scripts/build.py     the entire build — reads links.yaml, writes dist/
-assets/               source images (logo, photo) copied into dist/ on build
-dist/                 generated output (not source of truth — rebuild, don't hand-edit)
+links.yaml                    content: site config, categories, links
+scripts/build.py               the entire build — reads links.yaml, writes dist/
+assets/                         source images (logo, photo) copied into dist/ on build
+CNAME                           custom domain for GitHub Pages, copied into dist/ on build
+.github/workflows/deploy.yml    builds and deploys dist/ to GitHub Pages on push to main
+dist/                           generated output (not source of truth — rebuild, don't hand-edit)
 ```
 
 ## Design
@@ -88,11 +91,18 @@ Visual language (colors, spacing, typography tokens) and several icons are
 carried over from the [`year-in-review`](../year-in-review) repo's
 `DESIGN.md` for continuity across `gkt.sh` properties.
 
+## Deployment
+
+Deployed via GitHub Pages at `keylinks.gkt.sh`. `.github/workflows/deploy.yml`
+runs `uv run scripts/build.py` on every push to `main` and publishes `dist/`
+(which includes the copied `CNAME`) using `actions/deploy-pages`. No manual
+deploy step — pushing to `main` is the deploy.
+
+DNS: a `CNAME` record for `keylinks.gkt.sh` must point at
+`gkthiruvathukal.github.io` in whatever DNS provider hosts `gkt.sh`. This is
+managed outside this repo.
+
 ## Status
 
-Local build and preview only, so far. Not yet wired up:
-
-- Git repository / version control
-- GitHub Actions build + deploy to GitHub Pages
-- Analytics
-- Cloudflare (planned for a v2, out of scope for now)
+- Git repo, GitHub Actions deploy, and custom domain (`CNAME`) are wired up.
+- Not yet done: analytics; Cloudflare (planned for a v2, out of scope for now).

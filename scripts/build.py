@@ -18,6 +18,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "links.yaml"
 ASSETS_DIR = ROOT / "assets"
+CNAME_FILE = ROOT / "CNAME"
 DIST_DIR = ROOT / "dist"
 
 # Icon paths follow the same convention as year-in-review's profile-link
@@ -162,12 +163,12 @@ a.link-card.tiled svg {
   width: 28px;
   height: 28px;
 }
-@media (max-width: 600px) {
+@media (max-width: 860px) {
   ul.links.tiled {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   ul.links.tiled {
     grid-template-columns: 1fr;
   }
@@ -268,6 +269,9 @@ def build() -> None:
         if dist_assets.exists():
             shutil.rmtree(dist_assets)
         shutil.copytree(ASSETS_DIR, dist_assets)
+
+    if CNAME_FILE.exists():
+        shutil.copy(CNAME_FILE, DIST_DIR / "CNAME")
 
     print(f"Wrote {DIST_DIR / 'index.html'}")
 

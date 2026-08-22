@@ -7,9 +7,10 @@ Guidance for AI coding agents working in this repository.
 A serverless, git-backed linktree page for George K. Thiruvathukal. All
 content lives in `links.yaml`; `scripts/build.py` renders it to a single
 static `dist/index.html`. No login, no database, no client-side JavaScript,
-no framework. Deployment target is GitHub Pages (not yet wired up — see
-`README.md` Status section). Sibling site: `../year-in-review` (same visual
-language, same zero-dependency static-site philosophy).
+no framework. Deployed to GitHub Pages at `keylinks.gkt.sh` via
+`.github/workflows/deploy.yml` on every push to `main`. Sibling site:
+`../year-in-review` (same visual language, same zero-dependency static-site
+philosophy).
 
 ## Commands
 
@@ -39,7 +40,8 @@ a `requirements.txt`, `pyproject.toml`, or venv for this.
   4. String-concatenates everything (cards → section `<ul>`s → full page)
      into one f-string and writes `dist/index.html`.
   5. Copies `assets/` into `dist/assets/` (`shutil.copytree`, wiping any
-     stale copy first).
+     stale copy first), and copies the repo-root `CNAME` into `dist/CNAME`
+     if present.
 - `ICONS` dict (top of `scripts/build.py`) — icon key → inline SVG `<path>`.
   24x24 viewBox convention; brand marks (`linkedin`, `github`) use
   `fill="currentColor"`, everything else is `stroke="currentColor"
@@ -51,12 +53,21 @@ a `requirements.txt`, `pyproject.toml`, or venv for this.
 - `CSS` string (also in `scripts/build.py`) — design tokens (colors,
   shadow) match `../year-in-review/DESIGN.md`. Two layouts share the same
   card markup: `list` (flex column) and `tiled` (CSS grid, `auto-fit` down
-  to a forced 2-column cap at ≤600px and 1-column at ≤480px). Layout is
-  chosen by `site.layout` in `links.yaml`, read once in `build()` — there is
-  no client-side toggle.
+  to a forced 2-column cap at ≤860px and 1-column at ≤600px — deliberately
+  wide breakpoints so a manually-resized desktop browser window reliably
+  reaches single-column, not just actual phone viewports). Layout is chosen
+  by `site.layout` in `links.yaml`, read once in `build()` — there is no
+  client-side toggle.
 - `assets/` — source images. `logo.png` (favicon) and `photo.jpg` (avatar)
   are referenced by path from `site.logo` / `site.photo` in `links.yaml`;
   paths are copied as-is, not renamed or optimized by the build.
+- `CNAME` (repo root) — GitHub Pages custom domain (`keylinks.gkt.sh`).
+  Copied into `dist/CNAME` by `build()` so it ships with every deployment;
+  don't rely on the GitHub Pages UI setting instead, since Actions-based
+  deploys can overwrite it.
+- `.github/workflows/deploy.yml` — runs `uv run scripts/build.py` then
+  `actions/upload-pages-artifact` + `actions/deploy-pages` on push to
+  `main`. This is the only deploy path; there is no manual publish step.
 - `dist/` — generated output. Never hand-edit; it's overwritten on every
   build.
 
