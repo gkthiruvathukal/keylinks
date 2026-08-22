@@ -1,0 +1,117 @@
+site:
+  title: "George K. Thiruvathukal"
+  tagline: "Professor of Computer Science, Loyola University Chicago"
+  logo: "assets/logo.png"
+  photo: "assets/photo.jpg"
+  # layout: "list" (default, one link per row) or "tiled" (grid of cards,
+  # like the year-card grid on year-in-review's root page)
+  layout: "tiled"
+
+categories:
+  - key: home
+    label: "Home"
+  - key: contact
+    label: "Contact"
+  - key: academic
+    label: "Academic Profiles"
+  - key: social
+    label: "Social & Professional"
+  - key: code
+    label: "Code & Projects"
+  - key: app
+    label: "Apps"
+  - key: music
+    label: "Music"
+  - key: administrative
+    label: "Administrative"
+
+links:
+  - name: "gkt.sh"
+    url: "https://gkt.sh/"
+    description: "Personal & professional website"
+    icon: website
+    tags: [home]
+
+  - name: "Book a meeting"
+    url: "https://calendly.com/gkthiruvathukal"
+    description: "Schedule time via Calendly"
+    icon: calendar
+    tags: [home]
+
+  - name: "Office phone"
+    url: "tel:+17735088931"
+    description: "+1.773.508.8931 (Loyola)"
+    icon: phone
+    tags: [contact]
+
+  - name: "Loyola profile"
+    url: "https://www.luc.edu/cs/aboutus/people/profiles/thiruvathukalgeorgek.shtml"
+    description: "Faculty profile, Loyola CS"
+    icon: institution
+    tags: [academic]
+
+  - name: "Argonne (ALCF) profile"
+    url: "https://www.alcf.anl.gov/about/people/george-k-thiruvathukal"
+    description: "Visiting Computer Scientist profile"
+    icon: lab
+    tags: [academic]
+
+  - name: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=Ls7yS0IAAAAJ&hl=en"
+    description: "Citations & publication metrics"
+    icon: scholar
+    tags: [academic]
+
+  - name: "ORCID"
+    url: "https://orcid.org/0000-0002-0452-5571"
+    description: "Researcher identifier"
+    icon: id-badge
+    tags: [academic]
+
+  - name: "scholars.luc.edu"
+    url: "https://scholars.luc.edu/en/persons/george-kuriakose-thiruvathukal"
+    description: "Loyola University Chicago Research Portal profile"
+    icon: profile
+    tags: [academic]
+
+  - name: "eCommons CS collection"
+    url: "https://ecommons.luc.edu/cs_facpubs/"
+    description: "Loyola CS dept. open-access publications"
+    icon: library
+    tags: [academic]
+
+  - name: "arXiv (author search)"
+    url: "https://arxiv.org/search/?searchtype=author&query=Thiruvathukal"
+    description: "Author-search results on arXiv"
+    icon: search
+    tags: [academic]
+
+  - name: "LinkedIn"
+    url: "https://www.linkedin.com/in/gkthiruvathukal/"
+    description: "Professional network"
+    icon: linkedin
+    tags: [social]
+
+  - name: "GitHub"
+    url: "https://github.com/gkthiruvathukal"
+    description: "Source code & projects"
+    icon: github
+    tags: [code]
+
+  - name: "jazz-scales.gkt.sh"
+    url: "https://jazz-scales.gkt.sh/"
+    description: "Jazz scales app"
+    icon: music
+    tags: [app, music]
+
+  - name: "compositions.gkt.sh"
+    url: "https://compositions.gkt.sh/"
+    description: "Compositions app"
+    icon: music
+    tags: [app, music]
+
+  - name: "advising.cs.luc.edu"
+    url: "https://advising.cs.luc.edu/"
+    description: "Advising tool"
+    icon: clipboard
+    tags: [app, administrative]
