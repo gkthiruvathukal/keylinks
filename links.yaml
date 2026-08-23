@@ -99,7 +99,7 @@ links:
     icon: id-badge
     tags: [academic]
 
-  - name: "scholars.luc.edu"
+  - name: "Loyola Scholars Page"
     url: "https://scholars.luc.edu/en/persons/george-kuriakose-thiruvathukal"
     description: "Loyola Chicago Faculty Scholars Page"
     icon: profile
@@ -111,7 +111,7 @@ links:
     icon: library
     tags: [academic]
 
-  - name: "arXiv (author search)"
+  - name: "arXiv author search"
     url: "https://arxiv.org/search/?searchtype=author&query=Thiruvathukal"
     description: "Authors with Thiruvathukal on arXiv"
     icon: search
