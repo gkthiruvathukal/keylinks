@@ -40,6 +40,9 @@ ICONS: dict[str, str] = {
     "clipboard": '<path fill="none" stroke="currentColor" stroke-width="2" d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1Zm-3 2h12v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6Zm3 6h6M9 15h6"/>',
     "calendar": '<path fill="none" stroke="currentColor" stroke-width="2" d="M7 4v3M17 4v3M4 9h16M5 7h14a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z"/>',
     "phone": '<path fill="none" stroke="currentColor" stroke-width="2" d="M6 4h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a1 1 0 0 1-1 1A15 15 0 0 1 5 5a1 1 0 0 1 1-1Z"/>',
+    "email": '<path fill="none" stroke="currentColor" stroke-width="2" d="M4 5h16v14H4V5Zm0 0 8 7 8-7"/>',
+    "document": '<path fill="none" stroke="currentColor" stroke-width="2" d="M6 3h9l3 3v15H6V3Zm9 0v3h3M9 11h6M9 15h6"/>',
+    "book": '<path fill="none" stroke="currentColor" stroke-width="2" d="M6 4h9a3 3 0 0 1 3 3v13H9a3 3 0 0 0-3 3V4Zm3 4h6M9 11h6"/>',
     "link": '<path fill="none" stroke="currentColor" stroke-width="2" d="M9 15 15 9M10 6l1-1a4 4 0 1 1 6 6l-1 1M14 18l-1 1a4 4 0 1 1-6-6l1-1"/>',
 }
 
@@ -158,6 +161,7 @@ a.link-card.tiled {
   justify-content: center;
   gap: 10px;
   padding: 20px 14px;
+  height: 100%;
 }
 a.link-card.tiled svg {
   width: 28px;

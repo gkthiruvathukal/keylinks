@@ -14,6 +14,8 @@ categories:
     label: "Contact"
   - key: academic
     label: "Academic Profiles"
+  - key: books
+    label: "Books"
   - key: social
     label: "Social & Professional"
   - key: code
@@ -38,53 +40,101 @@ links:
     icon: calendar
     tags: [home]
 
+  - name: "CV"
+    url: "https://cv.gkt.sh/cv"
+    description: "Curriculum vitae"
+    icon: document
+    tags: [home]
+
+  - name: "Software and Systems Laboratory (SSL)"
+    url: "https://ssl.cs.luc.edu"
+    description: "My research lab at Loyola"
+    icon: lab
+    tags: [home]
+
   - name: "Office phone"
     url: "tel:+17735088931"
     description: "+1.773.508.8931 (Loyola)"
     icon: phone
     tags: [contact]
 
-  - name: "Loyola profile"
+  - name: "Email"
+    url: "mailto:gthiruvathukal@luc.edu"
+    description: "gthiruvathukal@luc.edu (Loyola)"
+    icon: email
+    tags: [contact]
+
+  - name: "Loyola Profile"
     url: "https://www.luc.edu/cs/aboutus/people/profiles/thiruvathukalgeorgek.shtml"
-    description: "Faculty profile, Loyola CS"
+    description: "Faculty Profile"
     icon: institution
     tags: [academic]
 
-  - name: "Argonne (ALCF) profile"
+  - name: "Argonne Profile"
     url: "https://www.alcf.anl.gov/about/people/george-k-thiruvathukal"
-    description: "Visiting Computer Scientist profile"
+    description: "Visiting Computer Scientist Profile"
     icon: lab
     tags: [academic]
 
   - name: "Google Scholar"
     url: "https://scholar.google.com/citations?user=Ls7yS0IAAAAJ&hl=en"
-    description: "Citations & publication metrics"
+    description: "Publication Mmetrics and Citations"
     icon: scholar
     tags: [academic]
 
   - name: "ORCID"
     url: "https://orcid.org/0000-0002-0452-5571"
-    description: "Researcher identifier"
+    description: "Unique Researcher Identifier"
     icon: id-badge
     tags: [academic]
 
   - name: "scholars.luc.edu"
     url: "https://scholars.luc.edu/en/persons/george-kuriakose-thiruvathukal"
-    description: "Loyola University Chicago Research Portal profile"
+    description: "Loyola Chicago Faculty Scholars Page "
     icon: profile
     tags: [academic]
 
   - name: "eCommons CS collection"
     url: "https://ecommons.luc.edu/cs_facpubs/"
-    description: "Loyola CS dept. open-access publications"
+    description: "Loyola Chicago Open Access Digital Library"
     icon: library
     tags: [academic]
 
   - name: "arXiv (author search)"
     url: "https://arxiv.org/search/?searchtype=author&query=Thiruvathukal"
-    description: "Author-search results on arXiv"
+    description: "Author last name search on arXiv"
     icon: search
     tags: [academic]
+
+  - name: "Intro to Statistics in Criminal Justice & Criminology"
+    url: "https://www.wiley.com/en-us/shop/general-introductory-law/introduction-to-statistics-in-criminal-justice-and-criminology-a-practical-approach-to-calculating-using-and-interpreting-data-p-9781118559239"
+    description: "Textbook, Wiley"
+    icon: book
+    tags: [books]
+
+  - name: "Recursion, Mathematics, and Python"
+    url: "https://www.routledge.com/Recursion-Mathematics-and-Python/Lu-Thiruvathukal/p/book/9781041149538"
+    description: "Textbook, Routledge"
+    icon: book
+    tags: [books]
+
+  - name: "Low-Power Computer Vision"
+    url: "https://www.routledge.com/Low-Power-Computer-Vision-Improve-the-Efficiency-of-Artificial-Intelligence/Thiruvathukal-Lu-Kim-Chen-Chen/p/book/9780367755287"
+    description: "Textbook, Routledge"
+    icon: book
+    tags: [books]
+
+  - name: "Software Engineering for Science"
+    url: "https://www.routledge.com/Software-Engineering-for-Science/Carver-ChueHong-Thiruvathukal/p/book/9780367574277"
+    description: "Research Book, Routledge"
+    icon: book
+    tags: [books]
+
+  - name: "Codename Revolution"
+    url: "https://mitpress.mit.edu/9780262553780/codename-revolution/"
+    description: "Research Monograph, MIT Press"
+    icon: book
+    tags: [books]
 
   - name: "LinkedIn"
     url: "https://www.linkedin.com/in/gkthiruvathukal/"
@@ -100,18 +150,18 @@ links:
 
   - name: "jazz-scales.gkt.sh"
     url: "https://jazz-scales.gkt.sh/"
-    description: "Jazz scales app"
+    description: "Jazz scales Practice App"
     icon: music
     tags: [app, music]
 
   - name: "compositions.gkt.sh"
     url: "https://compositions.gkt.sh/"
-    description: "Compositions app"
+    description: "Compositions"
     icon: music
     tags: [app, music]
 
   - name: "advising.cs.luc.edu"
     url: "https://advising.cs.luc.edu/"
-    description: "Advising tool"
+    description: "Advising App"
     icon: clipboard
     tags: [app, administrative]
