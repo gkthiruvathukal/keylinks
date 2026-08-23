@@ -117,33 +117,51 @@ links:
     icon: search
     tags: [academic]
 
-  - name: "Intro to Statistics in Criminal Justice & Criminology"
-    url: "https://www.wiley.com/en-us/shop/general-introductory-law/introduction-to-statistics-in-criminal-justice-and-criminology-a-practical-approach-to-calculating-using-and-interpreting-data-p-9781118559239"
-    description: "Textbook, Wiley"
-    icon: book
-    tags: [books]
-
-  - name: "Recursion, Mathematics, and Python"
+  - name: "Recursion: Mathematics and Python (2026)"
     url: "https://www.routledge.com/Recursion-Mathematics-and-Python/Lu-Thiruvathukal/p/book/9781041149538"
     description: "Textbook, Routledge"
     icon: book
     tags: [books]
 
-  - name: "Low-Power Computer Vision"
+  - name: "Intro to Statistics in Criminal Justice & Criminology (2026)"
+    url: "https://www.wiley.com/en-us/shop/general-introductory-law/introduction-to-statistics-in-criminal-justice-and-criminology-a-practical-approach-to-calculating-using-and-interpreting-data-p-9781118559239"
+    description: "Textbook, Wiley"
+    icon: book
+    tags: [books]
+
+  - name: "Intermediate C Programming (2024)"
+    url: "https://www.routledge.com/Intermediate-C-Programming/Lu-Thiruvathukal/p/book/9781032189819"
+    description: "Textbook, Routledge"
+    icon: book
+    tags: [books]
+
+  - name: "Low-Power Computer Vision (2022)"
     url: "https://www.routledge.com/Low-Power-Computer-Vision-Improve-the-Efficiency-of-Artificial-Intelligence/Thiruvathukal-Lu-Kim-Chen-Chen/p/book/9780367755287"
     description: "Textbook, Routledge"
     icon: book
     tags: [books]
 
-  - name: "Software Engineering for Science"
+  - name: "Software Engineering for Science (2020)"
     url: "https://www.routledge.com/Software-Engineering-for-Science/Carver-ChueHong-Thiruvathukal/p/book/9780367574277"
     description: "Research Book, Routledge"
     icon: book
     tags: [books]
 
-  - name: "Codename Revolution"
+  - name: "Codename Revolution (2012)"
     url: "https://mitpress.mit.edu/9780262553780/codename-revolution/"
     description: "Research Monograph, MIT Press"
+    icon: book
+    tags: [books]
+
+  - name: "Web Programming in Python (2002)"
+    url: "https://ecommons.luc.edu/cs_facpubs/267/"
+    description: "Profesional/Technical Book"
+    icon: book
+    tags: [books]
+
+  - name: "High Performance Java Platform Computing (2000)"
+    url: "https://ecommons.luc.edu/cs_facpubs/3/"
+    description: "Profesional/Technical Book"
     icon: book
     tags: [books]
 
