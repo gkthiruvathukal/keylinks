@@ -89,7 +89,7 @@ links:
 
   - name: "Google Scholar"
     url: "https://scholar.google.com/citations?user=Ls7yS0IAAAAJ&hl=en"
-    description: "Publication Mmetrics and Citations"
+    description: "Publication Metrics and Citations"
     icon: scholar
     tags: [academic]
 
@@ -101,7 +101,7 @@ links:
 
   - name: "scholars.luc.edu"
     url: "https://scholars.luc.edu/en/persons/george-kuriakose-thiruvathukal"
-    description: "Loyola Chicago Faculty Scholars Page "
+    description: "Loyola Chicago Faculty Scholars Page"
     icon: profile
     tags: [academic]
 
@@ -155,13 +155,13 @@ links:
 
   - name: "Web Programming in Python (2002)"
     url: "https://ecommons.luc.edu/cs_facpubs/267/"
-    description: "Profesional/Technical Book"
+    description: "Professional/Technical Book"
     icon: book
     tags: [books]
 
   - name: "High Performance Java Platform Computing (2000)"
     url: "https://ecommons.luc.edu/cs_facpubs/3/"
-    description: "Profesional/Technical Book"
+    description: "Professional/Technical Book"
     icon: book
     tags: [books]
 
@@ -209,6 +209,6 @@ links:
 
   - name: "My Advising App for Loyola Students"
     url: "https://advising.cs.luc.edu/"
-    description: "Advising Checlist App for prospective and current students"
+    description: "Advising Checklist App for prospective and current students"
     icon: clipboard
     tags: [code, administrative]
