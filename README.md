@@ -1,4 +1,4 @@
-# linktree
+# link collection
 
 A serverless, git-backed link-in-bio page. All content lives in `links.yaml`;
 a small Python script renders it to a single static `dist/index.html`. No
@@ -39,6 +39,8 @@ site:
   tagline: "..."        # subtitle under the title
   logo: "assets/logo.png"    # optional, used as the favicon
   photo: "assets/photo.jpg"  # optional, used as the circular avatar
+  url: "https://keylinks.gkt.sh/"  # optional, canonical URL; generates
+                                    # the QR code next to the avatar if set
   layout: "tiled"        # "list" (one link per row) or "tiled" (card grid)
 
 categories:
@@ -73,6 +75,14 @@ links:
   columns at ≤860px, 1 column at ≤600px for phones/small tablets); `list`
   gives a single-column list of rows. Toggle it in `links.yaml` — no code
   changes needed.
+- **QR code**: set `site.url` to the page's own canonical URL and a QR
+  code encoding it renders next to the avatar. It's a real `<button>`, not
+  a link — clicking it calls the browser's Fullscreen API so the code
+  fills the whole screen at high contrast, handy for projecting at a
+  conference so people can scan it from across the room. Omit `site.url`
+  to skip rendering it. Generated at build time with the `qrcode` package
+  (pure Python, no Pillow needed) as inline SVG — no runtime dependency,
+  no external QR-generation service called.
 
 ## Project structure
 
@@ -97,6 +107,13 @@ Deployed via GitHub Pages at `keylinks.gkt.sh`. `.github/workflows/deploy.yml`
 runs `uv run scripts/build.py` on every push to `main` and publishes `dist/`
 (which includes the copied `CNAME`) using `actions/deploy-pages`. No manual
 deploy step — pushing to `main` is the deploy.
+
+The footer shows a copyright line, a "Built from this repo" link, and a
+"Last updated on <date>" line. That date comes from a `LAST_UPDATED`
+environment variable the workflow computes at deploy time (`date -u` in a
+`now` step) and passes to the build — a plain local `uv run scripts/build.py`
+has no `LAST_UPDATED` set, so the "Last updated" line simply doesn't render
+locally (a local build isn't a deployment, so it shouldn't claim to be one).
 
 DNS: a `CNAME` record for `keylinks.gkt.sh` must point at
 `gkthiruvathukal.github.io` in whatever DNS provider hosts `gkt.sh`. This is

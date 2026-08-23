@@ -3,6 +3,9 @@ site:
   tagline: "Professor of Computer Science, Loyola University Chicago"
   logo: "assets/logo.png"
   photo: "assets/photo.jpg"
+  # Canonical deployed URL. Used to generate the QR code next to the
+  # avatar; omit this field to skip rendering the QR code entirely.
+  url: "https://keylinks.gkt.sh/"
   # layout: "list" (default, one link per row) or "tiled" (grid of cards,
   # like the year-card grid on year-in-review's root page)
   layout: "tiled"

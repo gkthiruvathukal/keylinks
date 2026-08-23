@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["pyyaml"]
+# dependencies = ["pyyaml", "qrcode"]
 # ///
 #
 # --- How to run ---
@@ -9,11 +9,15 @@
 
 from __future__ import annotations
 
+import io
 import os
+import re
 import shutil
 from pathlib import Path
 from html import escape
 
+import qrcode
+import qrcode.image.svg
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -85,7 +89,6 @@ header.hero .avatar {
   object-fit: cover;
   border: 3px solid var(--paper);
   box-shadow: var(--shadow);
-  margin-bottom: 16px;
 }
 header.hero h1 {
   font-size: clamp(28px, 5vw, 40px);
@@ -182,6 +185,58 @@ a.link-card.tiled svg {
   }
 }
 
+.identity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+button.qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--muted);
+}
+button.qr svg {
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+button.qr .qr-caption {
+  font-size: 11px;
+}
+/* Fullscreen mode: fill the whole screen with a large, high-contrast
+   QR code so it can be scanned from across a conference room. */
+button.qr:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+button.qr:fullscreen svg {
+  width: min(80vw, 80vh);
+  height: min(80vw, 80vh);
+  border: none;
+  box-shadow: none;
+}
+button.qr:fullscreen .qr-caption {
+  display: none;
+}
+
 footer {
   text-align: center;
   color: var(--muted);
@@ -190,6 +245,16 @@ footer {
 }
 footer a { color: var(--accent); }
 """
+
+
+def render_qr_svg(url: str) -> str:
+    img = qrcode.make(url, image_factory=qrcode.image.svg.SvgPathImage, box_size=10, border=2)
+    buf = io.BytesIO()
+    img.save(buf)
+    svg = buf.getvalue().decode("utf-8")
+    svg = svg.split("?>", 1)[1].lstrip()  # drop the <?xml ...?> declaration
+    svg = re.sub(r'\s(width|height)="[^"]*"', "", svg)  # let CSS control size
+    return svg
 
 
 def render_link_card(link: dict, tiled: bool) -> str:
@@ -249,6 +314,28 @@ def build() -> None:
     last_updated = os.environ.get("LAST_UPDATED")
     last_updated_html = f"<p>Last updated on {escape(last_updated)}.</p>" if last_updated else ""
 
+    site_url = site.get("url")
+    qr_html = ""
+    qr_script = ""
+    if site_url:
+        qr_svg = render_qr_svg(site_url)
+        qr_html = f"""<button type="button" class="qr" id="qr-trigger" aria-label="Show QR code full screen for scanning">
+          {qr_svg}
+          <span class="qr-caption">Tap/click to enlarge</span>
+        </button>"""
+        qr_script = """<script>
+    (() => {
+      const btn = document.getElementById("qr-trigger");
+      if (!btn || !btn.requestFullscreen) return;
+      btn.addEventListener("click", () => { btn.requestFullscreen(); });
+    })();
+  </script>"""
+
+    identity_html = f"""<div class="identity">
+      {avatar_html}
+      {qr_html}
+      </div>""" if (avatar_html or qr_html) else ""
+
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -261,17 +348,18 @@ def build() -> None:
 <body>
   <main>
     <header class="hero">
-      {avatar_html}
+      {identity_html}
       <h1>{escape(site["title"])}</h1>
       <p>{escape(site["tagline"])}</p>
     </header>
 {sections_html}
     <footer>
       <p>&copy; 2026&ndash;Present George K. Thiruvathukal.</p>
-      <p>Built from <a href="https://github.com/gkthiruvathukal/keylinks">links.yaml</a>.</p>
+      <p>Built from <a href="https://github.com/gkthiruvathukal/keylinks">this repo</a>.</p>
       {last_updated_html}
     </footer>
   </main>
+  {qr_script}
 </body>
 </html>
 """
