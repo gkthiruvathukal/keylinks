@@ -147,7 +147,7 @@ links:
     icon: book
     tags: [books]
 
-  - name: "Practicing AI"
+  - name: "Practicing AI - Davis and Thiruvathukal"
     url: "https://www.computer.org/csdl/magazine/co"
     description: "New column, IEEE Computer (page coming soon)"
     icon: magazine
