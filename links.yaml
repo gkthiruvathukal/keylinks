@@ -137,13 +137,13 @@ links:
 
   - name: "Low-Power Computer Vision (2022)"
     url: "https://www.routledge.com/Low-Power-Computer-Vision-Improve-the-Efficiency-of-Artificial-Intelligence/Thiruvathukal-Lu-Kim-Chen-Chen/p/book/9780367755287"
-    description: "Textbook, Routledge"
+    description: "Edited Book, Routledge"
     icon: book
     tags: [books]
 
   - name: "Software Engineering for Science (2020)"
     url: "https://www.routledge.com/Software-Engineering-for-Science/Carver-ChueHong-Thiruvathukal/p/book/9780367574277"
-    description: "Research Book, Routledge"
+    description: "Edited Book, Routledge"
     icon: book
     tags: [books]
 
