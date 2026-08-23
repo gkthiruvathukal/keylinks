@@ -33,7 +33,7 @@ categories:
     label: "Administrative"
 
 links:
-  - name: "gkt.sh"
+  - name: "Home Page"
     url: "https://gkt.sh/"
     description: "Personal & professional website"
     icon: website
@@ -48,6 +48,12 @@ links:
   - name: "CV"
     url: "https://cv.gkt.sh/cv"
     description: "Curriculum vitae"
+    icon: document
+    tags: [home]
+
+  - name: "Academic Year in Review"
+    url: "https://year-in-review.gkt.sh/"
+    description: "Highlights from 2025-2026 academic year"
     icon: document
     tags: [home]
 
@@ -171,19 +177,19 @@ links:
     icon: github
     tags: [code,social]
 
-  - name: "jazz-scales.gkt.sh"
+  - name: "Jazz Patterns and Scales"
     url: "https://jazz-scales.gkt.sh/"
     description: "Jazz scales Practice App for All Musicians"
     icon: music
     tags: [code, music]
 
-  - name: "compositions.gkt.sh"
+  - name: "My Compositions"
     url: "https://compositions.gkt.sh/"
     description: "My Compositions"
     icon: music
     tags: [code, music]
 
-  - name: "advising.cs.luc.edu"
+  - name: "My Advising App for Loyola Students"
     url: "https://advising.cs.luc.edu/"
     description: "Advising Checlist App for prospective and current students"
     icon: clipboard
