@@ -16,6 +16,8 @@ categories:
     label: "Academic Profiles"
   - key: books
     label: "Books"
+  - key: magazines
+    label: "Magazines & Journals"
   - key: social
     label: "Social & Professional"
   - key: code
@@ -102,7 +104,7 @@ links:
 
   - name: "arXiv (author search)"
     url: "https://arxiv.org/search/?searchtype=author&query=Thiruvathukal"
-    description: "Author last name search on arXiv"
+    description: "Authors with Thiruvathukal on arXiv"
     icon: search
     tags: [academic]
 
@@ -136,6 +138,24 @@ links:
     icon: book
     tags: [books]
 
+  - name: "Practicing AI"
+    url: "https://www.computer.org/csdl/magazine/co"
+    description: "New column, IEEE Computer (page coming soon)"
+    icon: magazine
+    tags: [magazines]
+
+  - name: "Past Editor-in-Chief, CiSE"
+    url: "https://www.computer.org/csdl/magazine/cs"
+    description: "Computing in Science & Engineering, 2013–2016"
+    icon: magazine
+    tags: [magazines]
+
+  - name: "Past Editor & Associate EIC, JOSS"
+    url: "https://joss.theoj.org"
+    description: "Journal of Open Source Software, 2015–2026"
+    icon: magazine
+    tags: [magazines]
+
   - name: "LinkedIn"
     url: "https://www.linkedin.com/in/gkthiruvathukal/"
     description: "Professional network"
@@ -146,22 +166,22 @@ links:
     url: "https://github.com/gkthiruvathukal"
     description: "Source code & projects"
     icon: github
-    tags: [code]
+    tags: [code,social]
 
   - name: "jazz-scales.gkt.sh"
     url: "https://jazz-scales.gkt.sh/"
-    description: "Jazz scales Practice App"
+    description: "Jazz scales Practice App for All Musicians"
     icon: music
-    tags: [app, music]
+    tags: [code, music]
 
   - name: "compositions.gkt.sh"
     url: "https://compositions.gkt.sh/"
-    description: "Compositions"
+    description: "My Compositions"
     icon: music
-    tags: [app, music]
+    tags: [code, music]
 
   - name: "advising.cs.luc.edu"
     url: "https://advising.cs.luc.edu/"
-    description: "Advising App"
+    description: "Advising Checlist App for prospective and current students"
     icon: clipboard
-    tags: [app, administrative]
+    tags: [code, administrative]

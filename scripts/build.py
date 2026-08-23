@@ -9,6 +9,7 @@
 
 from __future__ import annotations
 
+import os
 import shutil
 from pathlib import Path
 from html import escape
@@ -43,6 +44,7 @@ ICONS: dict[str, str] = {
     "email": '<path fill="none" stroke="currentColor" stroke-width="2" d="M4 5h16v14H4V5Zm0 0 8 7 8-7"/>',
     "document": '<path fill="none" stroke="currentColor" stroke-width="2" d="M6 3h9l3 3v15H6V3Zm9 0v3h3M9 11h6M9 15h6"/>',
     "book": '<path fill="none" stroke="currentColor" stroke-width="2" d="M6 4h9a3 3 0 0 1 3 3v13H9a3 3 0 0 0-3 3V4Zm3 4h6M9 11h6"/>',
+    "magazine": '<path fill="none" stroke="currentColor" stroke-width="2" d="M3 5h13v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm13 0h5v11a2 2 0 0 1-2 2h-3M7 8h5M7 11h5M7 14h3"/>',
     "link": '<path fill="none" stroke="currentColor" stroke-width="2" d="M9 15 15 9M10 6l1-1a4 4 0 1 1 6 6l-1 1M14 18l-1 1a4 4 0 1 1-6-6l1-1"/>',
 }
 
@@ -136,6 +138,8 @@ a.link-card svg {
   color: var(--accent);
 }
 .link-text {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
 }
 .link-text .name {
@@ -240,6 +244,11 @@ def build() -> None:
         f'<link rel="icon" type="image/png" href="{escape(logo, quote=True)}">' if logo else ""
     )
 
+    # Set by .github/workflows/deploy.yml at deploy time; absent for local
+    # builds, since a local build isn't a deployment.
+    last_updated = os.environ.get("LAST_UPDATED")
+    last_updated_html = f"<p>Last updated on {escape(last_updated)}.</p>" if last_updated else ""
+
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -258,7 +267,9 @@ def build() -> None:
     </header>
 {sections_html}
     <footer>
-      <p>Built from <a href="https://github.com/gkthiruvathukal/linktree">links.yaml</a>.</p>
+      <p>&copy; 2026&ndash;Present George K. Thiruvathukal.</p>
+      <p>Built from <a href="https://github.com/gkthiruvathukal/keylinks">links.yaml</a>.</p>
+      {last_updated_html}
     </footer>
   </main>
 </body>
