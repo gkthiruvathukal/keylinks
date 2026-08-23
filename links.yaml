@@ -75,6 +75,12 @@ links:
     icon: email
     tags: [contact]
 
+  - name: "Email"
+    url: "mailto:gkt@anl.gov"
+    description: "gkt@anl.gov (Argonne)"
+    icon: email
+    tags: [contact]
+
   - name: "Loyola Profile"
     url: "https://www.luc.edu/cs/aboutus/people/profiles/thiruvathukalgeorgek.shtml"
     description: "Faculty Profile"
