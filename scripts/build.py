@@ -217,9 +217,15 @@ button.qr svg {
 button.qr .qr-caption {
   font-size: 11px;
 }
-/* Fullscreen mode: fill the whole screen with a large, high-contrast
-   QR code so it can be scanned from across a conference room. */
-button.qr:fullscreen {
+/* Maximized mode: fill the whole screen with a large, high-contrast QR
+   code so it can be scanned from across a conference room. Driven by a
+   JS-toggled class rather than the native Fullscreen API, because iOS
+   Safari doesn't support requestFullscreen() on non-video elements. */
+button.qr:fullscreen,
+button.qr.qr-maximized {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -227,13 +233,15 @@ button.qr:fullscreen {
   justify-content: center;
   background: #fff;
 }
-button.qr:fullscreen svg {
+button.qr:fullscreen svg,
+button.qr.qr-maximized svg {
   width: min(80vw, 80vh);
   height: min(80vw, 80vh);
   border: none;
   box-shadow: none;
 }
-button.qr:fullscreen .qr-caption {
+button.qr:fullscreen .qr-caption,
+button.qr.qr-maximized .qr-caption {
   display: none;
 }
 
@@ -326,8 +334,22 @@ def build() -> None:
         qr_script = """<script>
     (() => {
       const btn = document.getElementById("qr-trigger");
-      if (!btn || !btn.requestFullscreen) return;
-      btn.addEventListener("click", () => { btn.requestFullscreen(); });
+      if (!btn) return;
+      // Native Fullscreen API where it's actually supported (desktop
+      // browsers, Android Chrome); iOS Safari doesn't implement it for
+      // non-video elements, so the CSS class below is the real trigger
+      // that works everywhere.
+      btn.addEventListener("click", () => {
+        const maximized = btn.classList.toggle("qr-maximized");
+        if (maximized && btn.requestFullscreen) {
+          btn.requestFullscreen().catch(() => {});
+        } else if (!maximized && document.fullscreenElement) {
+          document.exitFullscreen().catch(() => {});
+        }
+      });
+      document.addEventListener("fullscreenchange", () => {
+        if (!document.fullscreenElement) btn.classList.remove("qr-maximized");
+      });
     })();
   </script>"""
 
