@@ -172,8 +172,8 @@ links:
     tags: [books]
 
   - name: "Practicing AI - Davis and Thiruvathukal"
-    url: "https://www.computer.org/csdl/magazine/co"
-    description: "New column, IEEE Computer (page coming soon)"
+    url: "https://practicingai.ai/""
+    description: "New column, IEEE Computer"
     icon: magazine
     tags: [magazines]
 
