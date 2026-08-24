@@ -172,7 +172,7 @@ links:
     tags: [books]
 
   - name: "Practicing AI - Davis and Thiruvathukal"
-    url: "https://practicingai.ai/""
+    url: "https://practicingai.ai/"
     description: "New column, IEEE Computer"
     icon: magazine
     tags: [magazines]
