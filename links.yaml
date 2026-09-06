@@ -219,13 +219,13 @@ links:
     icon: clipboard
     tags: [code, administrative]
 
-  - name: "Fall 2026 Schedule"
+  - name: "CS Department Fall 2026 Schedule"
     url: "https://sandbox.gkt.sh/schedules/web/fall26-time-grid.html"
     description: "Fall 2026 teaching schedule"
     icon: calendar
     tags: [administrative]
 
-  - name: "Spring 2027 Schedule"
+  - name: "CS Department Spring 2027 Schedule"
     url: "https://sandbox.gkt.sh/schedules/web/spring27-time-grid.html"
     description: "Spring 2027 teaching schedule"
     icon: calendar
