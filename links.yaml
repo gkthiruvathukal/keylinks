@@ -219,14 +219,14 @@ links:
     icon: clipboard
     tags: [code, administrative]
 
-  - name: "CS Department Fall 2026 Schedule"
-    url: "https://sandbox.gkt.sh/schedules/web/fall26-time-grid.html"
-    description: "Fall 2026 teaching schedule"
+  - name: "Upcoming CS Department Department Schedules"
+    url: "https://schedules.cs.luc.edu/comp/"
+    description: "CS Department Schecules AY 2026-2027"
     icon: calendar
     tags: [administrative]
 
-  - name: "CS Department Spring 2027 Schedule"
-    url: "https://sandbox.gkt.sh/schedules/web/spring27-time-grid.html"
-    description: "Spring 2027 teaching schedule"
+  - name: "Upcoming College of Arts and Sciences Schedules"
+    url: "https://schedules.cs.luc.edu/"
+    description: "College of Arts and Sciences Schedules AY 2026-2027"
     icon: calendar
     tags: [administrative]
