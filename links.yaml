@@ -63,6 +63,13 @@ links:
     icon: lab
     tags: [home]
 
+  - name: "AI for Formal Methods Research Group"
+    url: "https://ai4fm.cs.luc.edu"
+    description: "New research group at Loyola focused on formal methods and AI"
+    icon: lab
+    tags: [home]
+
+
   - name: "Office phone"
     url: "tel:+17735088931"
     description: "+1.773.508.8931 (Loyola)"
