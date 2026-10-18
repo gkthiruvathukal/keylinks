@@ -48,6 +48,12 @@ categories:
     label: "Administrative"
 
 links:
+  - name: "Add to Contacts"
+    url: "contact.vcf"
+    description: "Save my phone and email to Apple/Google Contacts"
+    icon: contact
+    tags: [home]
+
   - name: "Home Page"
     url: "https://gkt.sh/"
     description: "Personal & professional website"
@@ -84,12 +90,6 @@ links:
     icon: lab
     tags: [home]
 
-
-  - name: "Add to Contacts"
-    url: "contact.vcf"
-    description: "Save my phone and email to Apple/Google Contacts"
-    icon: contact
-    tags: [contact]
 
   - name: "Loyola Profile"
     url: "https://www.luc.edu/cs/aboutus/people/profiles/thiruvathukalgeorgek.shtml"
