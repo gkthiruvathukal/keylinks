@@ -281,11 +281,13 @@ def render_vcard(c: dict) -> str:
         return "\r\n ".join(line[i : i + 74] for i in range(0, len(line), 74))
 
     first, last = esc(c["first_name"]), esc(c["last_name"])
+    middle = esc(c.get("middle_name", ""))
+    full_name = " ".join(part for part in (first, middle, last) if part)
     lines = [
         "BEGIN:VCARD",
         "VERSION:3.0",
-        f"N:{last};{first};;;",
-        f"FN:{first} {last}",
+        f"N:{last};{first};{middle};;",
+        f"FN:{full_name}",
     ]
     if c.get("org"):
         lines.append(f"ORG:{esc(c['org'])}")

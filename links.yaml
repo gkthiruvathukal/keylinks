@@ -13,6 +13,7 @@ site:
 # Source for dist/contact.vcf (the "Add to Contacts" card below links to it).
 contact:
   first_name: "George"
+  middle_name: "Kuriakose"  # optional
   last_name: "Thiruvathukal"
   org: "Loyola University Chicago"
   title: "Professor of Computer Science"
