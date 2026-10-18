@@ -91,24 +91,6 @@ links:
     icon: contact
     tags: [contact]
 
-  - name: "Office phone"
-    url: "tel:+17735088931"
-    description: "+1.773.508.8931 (Loyola)"
-    icon: phone
-    tags: [contact]
-
-  - name: "Email"
-    url: "mailto:gthiruvathukal@luc.edu"
-    description: "gthiruvathukal@luc.edu (Loyola)"
-    icon: email
-    tags: [contact]
-
-  - name: "Email"
-    url: "mailto:gkt@anl.gov"
-    description: "gkt@anl.gov (Argonne)"
-    icon: email
-    tags: [contact]
-
   - name: "Loyola Profile"
     url: "https://www.luc.edu/cs/aboutus/people/profiles/thiruvathukalgeorgek.shtml"
     description: "Faculty Profile"
