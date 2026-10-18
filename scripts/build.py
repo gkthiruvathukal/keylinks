@@ -16,6 +16,7 @@ import re
 import shutil
 from pathlib import Path
 from html import escape
+from urllib.parse import urljoin
 
 import qrcode
 import qrcode.image.svg
@@ -216,7 +217,12 @@ button.qr svg {
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
-button.qr .qr-caption {
+button.qr .qr-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+button.qr .qr-hint {
   font-size: 11px;
 }
 /* Maximized mode: fill the whole screen with a large, high-contrast QR
@@ -242,8 +248,17 @@ button.qr.qr-maximized svg {
   border: none;
   box-shadow: none;
 }
-button.qr:fullscreen .qr-caption,
-button.qr.qr-maximized .qr-caption {
+button.qr:fullscreen,
+button.qr.qr-maximized {
+  flex-direction: column;
+  gap: 16px;
+}
+button.qr:fullscreen .qr-label,
+button.qr.qr-maximized .qr-label {
+  font-size: 24px;
+}
+button.qr:fullscreen .qr-hint,
+button.qr.qr-maximized .qr-hint {
   display: none;
 }
 
@@ -373,29 +388,40 @@ def build() -> None:
     qr_html = ""
     qr_script = ""
     if site_url:
-        qr_svg = render_qr_svg(site_url)
-        qr_html = f"""<button type="button" class="qr" id="qr-trigger" aria-label="Show QR code full screen for scanning">
-          {qr_svg}
-          <span class="qr-caption">Tap/click to enlarge</span>
+        # (target URL, caption) — the caption says what scanning does, and
+        # is also shown large in maximized mode.
+        qr_items = [(site_url, "This page")]
+        if data.get("contact"):
+            qr_items.append((urljoin(site_url, "contact.vcf"), "Save my contact"))
+        qr_html = "\n      ".join(
+            f"""<button type="button" class="qr" aria-label="Show QR code full screen: {escape(label, quote=True)}">
+          {render_qr_svg(url)}
+          <span class="qr-label">{escape(label)}</span>
+          <span class="qr-hint">Tap/click to enlarge</span>
         </button>"""
+            for url, label in qr_items
+        )
         qr_script = """<script>
     (() => {
-      const btn = document.getElementById("qr-trigger");
-      if (!btn) return;
       // Native Fullscreen API where it's actually supported (desktop
       // browsers, Android Chrome); iOS Safari doesn't implement it for
       // non-video elements, so the CSS class below is the real trigger
       // that works everywhere.
-      btn.addEventListener("click", () => {
-        const maximized = btn.classList.toggle("qr-maximized");
-        if (maximized && btn.requestFullscreen) {
-          btn.requestFullscreen().catch(() => {});
-        } else if (!maximized && document.fullscreenElement) {
-          document.exitFullscreen().catch(() => {});
-        }
+      const buttons = document.querySelectorAll("button.qr");
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const maximized = btn.classList.toggle("qr-maximized");
+          if (maximized && btn.requestFullscreen) {
+            btn.requestFullscreen().catch(() => {});
+          } else if (!maximized && document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+          }
+        });
       });
       document.addEventListener("fullscreenchange", () => {
-        if (!document.fullscreenElement) btn.classList.remove("qr-maximized");
+        if (!document.fullscreenElement) {
+          buttons.forEach((btn) => btn.classList.remove("qr-maximized"));
+        }
       });
     })();
   </script>"""
