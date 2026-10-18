@@ -134,6 +134,12 @@ links:
     icon: search
     tags: [academic]
 
+  - name: "The History of Computing and its Cultures (2027)"
+    url: "https://www.routledge.com/The-History-of-Computing-and-its-Cultures-From-Calculation-to-Convergence/Dennis-Thiruvathukal/p/book/9781138303898"
+    description: "Textbook, Routledge (coming soon)"
+    icon: book
+    tags: [books]
+
   - name: "Recursion: Mathematics and Python (2026)"
     url: "https://www.routledge.com/Recursion-Mathematics-and-Python/Lu-Thiruvathukal/p/book/9781041149538"
     description: "Textbook, Routledge"
