@@ -81,26 +81,26 @@ links:
 
   - name: "Software and Systems Laboratory (SSL)"
     url: "https://ssl.cs.luc.edu"
-    description: "My research lab at Loyola"
+    description: "A research group focused on modern software engineering and computer systems"
     icon: lab
     tags: [home]
 
   - name: "AI for Formal Methods Research Group"
     url: "https://ai4fm.cs.luc.edu"
-    description: "New research group at Loyola focused on formal methods and AI"
+    description: "A research group focused on formal methods and AI"
     icon: lab
     tags: [home]
 
 
   - name: "Loyola Profile"
     url: "https://www.luc.edu/cs/aboutus/people/profiles/thiruvathukalgeorgek.shtml"
-    description: "Faculty Profile"
+    description: "Faculty Profile in Computer Science department"
     icon: institution
     tags: [academic]
 
   - name: "Argonne Profile"
     url: "https://www.alcf.anl.gov/about/people/george-k-thiruvathukal"
-    description: "Visiting Computer Scientist Profile"
+    description: "Visiting Computer Scientist Profile at Argonne Leadership Computing Facility"
     icon: lab
     tags: [academic]
 
