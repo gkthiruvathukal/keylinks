@@ -10,6 +10,21 @@ site:
   # like the year-card grid on year-in-review's root page)
   layout: "tiled"
 
+# Source for dist/contact.vcf (the "Add to Contacts" card below links to it).
+contact:
+  first_name: "George"
+  last_name: "Thiruvathukal"
+  org: "Loyola University Chicago"
+  title: "Professor of Computer Science"
+  url: "https://keylinks.gkt.sh/"
+  # Small square crop of photo.jpg, embedded in the vCard (keep it small).
+  photo: "assets/contact-photo.jpg"
+  phones:
+    - {number: "+17735088931", type: work}
+  emails:
+    - {address: "gthiruvathukal@luc.edu", type: work}
+    - {address: "gkt@anl.gov", type: work}
+
 categories:
   - key: home
     label: "Home"
@@ -69,6 +84,12 @@ links:
     icon: lab
     tags: [home]
 
+
+  - name: "Add to Contacts"
+    url: "contact.vcf"
+    description: "Save my phone and email to Apple/Google Contacts"
+    icon: contact
+    tags: [contact]
 
   - name: "Office phone"
     url: "tel:+17735088931"

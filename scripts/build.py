@@ -9,6 +9,7 @@
 
 from __future__ import annotations
 
+import base64
 import io
 import os
 import re
@@ -45,6 +46,7 @@ ICONS: dict[str, str] = {
     "clipboard": '<path fill="none" stroke="currentColor" stroke-width="2" d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1Zm-3 2h12v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6Zm3 6h6M9 15h6"/>',
     "calendar": '<path fill="none" stroke="currentColor" stroke-width="2" d="M7 4v3M17 4v3M4 9h16M5 7h14a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z"/>',
     "phone": '<path fill="none" stroke="currentColor" stroke-width="2" d="M6 4h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a1 1 0 0 1-1 1A15 15 0 0 1 5 5a1 1 0 0 1 1-1Z"/>',
+    "contact": '<path fill="none" stroke="currentColor" stroke-width="2" d="M3 5h18v14H3V5Zm11 4h4m-4 3h4M8 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-3.5 5a3.5 3.5 0 0 1 7 0"/>',
     "email": '<path fill="none" stroke="currentColor" stroke-width="2" d="M4 5h16v14H4V5Zm0 0 8 7 8-7"/>',
     "document": '<path fill="none" stroke="currentColor" stroke-width="2" d="M6 3h9l3 3v15H6V3Zm9 0v3h3M9 11h6M9 15h6"/>',
     "book": '<path fill="none" stroke="currentColor" stroke-width="2" d="M6 4h9a3 3 0 0 1 3 3v13H9a3 3 0 0 0-3 3V4Zm3 4h6M9 11h6"/>',
@@ -265,6 +267,43 @@ def render_qr_svg(url: str) -> str:
     return svg
 
 
+def render_vcard(c: dict) -> str:
+    """Build a vCard 3.0 (the most widely compatible version) from the
+    `contact` block in links.yaml. Lines are CRLF-terminated per RFC 6350."""
+
+    def esc(v: str) -> str:
+        return (
+            str(v).replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+        )
+
+    def fold(line: str) -> str:
+        # RFC 6350 line folding: continuation lines start with one space.
+        return "\r\n ".join(line[i : i + 74] for i in range(0, len(line), 74))
+
+    first, last = esc(c["first_name"]), esc(c["last_name"])
+    lines = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        f"N:{last};{first};;;",
+        f"FN:{first} {last}",
+    ]
+    if c.get("org"):
+        lines.append(f"ORG:{esc(c['org'])}")
+    if c.get("title"):
+        lines.append(f"TITLE:{esc(c['title'])}")
+    for p in c.get("phones", []):
+        lines.append(f"TEL;TYPE={p.get('type', 'WORK').upper()},VOICE:{p['number']}")
+    for e in c.get("emails", []):
+        lines.append(f"EMAIL;TYPE=INTERNET,{e.get('type', 'WORK').upper()}:{e['address']}")
+    if c.get("url"):
+        lines.append(f"URL:{c['url']}")
+    if c.get("photo"):
+        b64 = base64.b64encode((ROOT / c["photo"]).read_bytes()).decode("ascii")
+        lines.append(fold(f"PHOTO;ENCODING=b;TYPE=JPEG:{b64}"))
+    lines.append("END:VCARD")
+    return "\r\n".join(lines) + "\r\n"
+
+
 def render_link_card(link: dict, tiled: bool) -> str:
     icon_svg = ICONS.get(link.get("icon", ""), ICONS["link"])
     name = escape(link["name"])
@@ -287,6 +326,12 @@ def build() -> None:
     site = data["site"]
     categories = data["categories"]
     links = data["links"]
+
+    if data.get("contact"):
+        DIST_DIR.mkdir(parents=True, exist_ok=True)
+        (DIST_DIR / "contact.vcf").write_text(
+            render_vcard(data["contact"]), encoding="utf-8", newline=""
+        )
 
     tiled = site.get("layout", "list") == "tiled"
     links_class = "links tiled" if tiled else "links"
